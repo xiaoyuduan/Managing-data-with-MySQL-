@@ -5,13 +5,7 @@ Copyright Jana Schaich Borg/Attribution-NonCommercial 4.0 International (CC BY-N
 
 When you are querying a business-related data set, you are usually doing so to answer a question about a subset of the data.  In this lesson you will learn how to select subsets of rows of data that meet criteria you specify, to help you prepare for these types of business questions.  The mechanism within a SQL query that allows you specify which subset of data you want to retrieve is the WHERE clause.
 
-Before we begin, let's load the SQL library and Dognition database, and make the Dognition database our default database.  As a reminder, these are the lines of code you should input:
-
-```python
-%load_ext sql
-%sql mysql://studentuser:studentpw@mysqlserver/dognitiondb
-%sql USE dognitiondb
-```
+Before we begin, let's load the SQL library and Dognition database, and make the Dognition database our default database.  
 
 
 ```python
@@ -36,16 +30,7 @@ Recall the general syntax structure we learned from the "Introduction to Query S
 
 This guide indicates that whenever the data we select need to meet certain criteria (specified using a "WHERE" clause), we specify those criteria after we have specified where the data come from.   
 
-Let's say we want to know which Dognition customers received access to Dognition's first four tests for free.  These customers have a 1 in the "free_start_user" column of the users table.  The syntax you would use to select the data for these customers would be:
-
-```mySQL
-SELECT user_guid
-FROM users
-WHERE free_start_user=1;
-```
-(Note: user_guid is the field that specifies the unique User ID number of each customer in the users table)
-
-If you wanted to double-check that the outputted data indeed met the criteria you specified, you could include a second column in your output that would give you the value in the free_start_user field for each row of the output: 
+Let's say we want to know which Dognition customers received access to Dognition's first four tests for free.  These customers have a 1 in the "free_start_user" column of the users table.  
 
 ```mySQL
 SELECT user_guid, free_start_user
