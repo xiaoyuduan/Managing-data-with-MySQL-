@@ -11,13 +11,6 @@ In this lesson, we are going to learn about three SQL clauses or functionalities
 %load_ext sql
 %sql mysql://studentuser:studentpw@mysqlserver/dognitiondb
 %sql USE dognitiondb
-```
-
-
-```python
-%load_ext sql
-%sql mysql://studentuser:studentpw@mysqlserver/dognitiondb
-%sql USE dognitiondb
 
 ```
 
@@ -41,12 +34,7 @@ SELECT dog_guid, created_at AS time_stamp
 FROM complete_tests
 ```
 
-Note that if you use an alias that includes a space, the alias must be surrounded in quotes:
 
-```mySQL
-SELECT dog_guid, created_at AS "time stamp"
-FROM complete_tests
-```
 
 You could also make an alias for a table:
 
@@ -3099,16 +3087,6 @@ SELECT DISTINCT breed
 FROM dogs;
 ```
 
-**Try it yourself (If you do not limit your output, you should get 2006 rows in your output):**
-
-
-```python
-%%sql
-SELECT DISTINCT breed
-FROM dogs;
-
-```
-
     2006 rows affected.
 
 
@@ -6129,12 +6107,6 @@ If you scroll through the output, you will see that no two entries are the same.
 <mark> When the DISTINCT clause is used with multiple columns in a SELECT statement, the combination of all the columns together is used to determine the uniqueness of a row in a result set.</mark>  
      
 For example, if you wanted to know all the possible combinations of states and cities in the users table, you could query:
-
-```mySQL
-SELECT DISTINCT state, city
-FROM users;
-```
-**Try it (if you don't limit your output you'll see 3999 rows in the query result, of which the first 1000 are displayed):**
 
 
 
