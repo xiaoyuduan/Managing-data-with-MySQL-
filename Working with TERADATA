@@ -1,0 +1,94 @@
+Get to know your data in Teradata
+
+%Look at your raw data
+
+SELECT TOP 10 *
+FROM strinfo
+
+%The following statement would select the first 10 rows of the strinfo table,ordered in ascending alphabetical order by the city name (you would retrieve names that start with “a”):
+
+SELECT TOP 10 *
+FROM strinfo
+ORDER BY city ASC
+
+%The following statement would select the first 10 rows of the strinfo table,ordered in descending alphabetical order by the city name (you would retrieve names that start with “w” and “y”):
+
+SELECT TOP 10 * 
+FROM strinfo
+ORDER BY city DESC
+
+%The following query would retrieve 10 random rows from the strinfo table:
+
+SELECT * 
+FROM strinfo
+SAMPLE 10;
+
+%The following query would retrieve a random 10% of the rows from the strinfo table:
+
+SELECT *
+FROM strinfo
+SAMPLE .10
+
+%Other important differences between Teradata and MySQL :
+%DISTINCT and LIMIT can be used in the same query statement in MySQL, but DISTINCT and TOP cannot be used together in Teradata
+
+%MySQL accepts either double or single quotation marks around strings of text in queries,but Teradata will only accept single quotation marks
+
+MySQL will accept the symbols “!=” and “<>” to indicate “does not equal”, but Teradata will only accept “<>” (other operators, like “IN”, “BETWEEN”, and “LIKE” are the same: http://www.teradatawiki.net/2013/09/Teradata-Operators.html)
+
+%What was the date of the earliest sale in the database where the sale price of the item did not equal the original price of the item, and what was the largest margin (original price minus sale price) of an item sold on that earliest date?
+select top 1 saledate, (orgprice-sprice) as margin
+from trnsact
+where orgprice<>sprice
+order by saledate ASC, margin DESC
+
+%What register number made the sale with the highest original price and highest sale price between the dates of August 1, 2004 and August 10, 2004? Make sure to sort by original price first and sale price second.
+SELECT TOP 10 register,saledate ,orgprice,sprice
+FROM trnsact
+WHERE extract(year from saledate)=2004 AND extract(MONTH from saledate)=8 AND extract(DAY from saledate)< 10
+ORDER BY orgprice DESC, sprice DESC;
+
+%What brand names with the word/letters “liz” in them exist in the Dillard’s database?
+SELECT DISTINCT brand
+FROM skuinfo
+WHERE brand LIKE '%liz%'
+
+%What is the lowest store number of all the stores in the STORE_MSA table that are in the city of “little rock”,”Memphis”, or “tulsa”?
+SELECT TOP 10 store
+FROM store_msa
+WHERE city IN ('LITTLE ROCK','MEMPHIS','TULSA')
+ORDER BY STORE ASC;
+
+%What is the sku number of the item in the Dillard’s database that had the highest original sales price?
+SELECT top 1 sku
+FROM trnsact
+ORDER BY orgprice DESC 
+
+%What was the highest original price in the Dillard’s database of the item with SKU 3631365?
+SELECT TOP 1 orgprice
+from trnsact
+WHERE SKU=3631365
+ORDER BY orgprice DESC
+
+%What is the color of the Liz Claiborne brand item with the highest SKU # in the Dillard’s database (the Liz Claiborne brand is abbreviated “LIZ CLAI” in the Dillard’s database)?
+
+SELECT TOP 1 color
+from skuinfo
+where brand='LIZ CLAI'
+ORDER BY sku DESC
+
+%How many Dillard's departments start with the letter "e"?
+SELECT COUNT(DISTINCT deptdesc)
+FROM deptinfo
+WHERE deptdesc LIKE 'e%'
+According to the strinfo table, in how many states within the United States are Dillard’s stores located? (HINT: the bottom of the SQL scratchpad reports the number of rows in your output)
+SELECT COUNT(DISTINCT state)
+FROM strinfo
+What was the date of the earliest sale in the database where the sale price of the item did not equal the original price of the item, and what was the largest margin (original price minus sale price) of an item sold on that earliest date?
+SELECT TOP 10 orgprice, sprice, orgprice-sprice AS margin, saledate
+
+FROM trnsact
+
+WHERE orgprice<>sprice
+
+ORDER BY saledate ASC, margin DESC
