@@ -1,7 +1,7 @@
 
 Copyright Jana Schaich Borg/Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
 
-# MySQL Exercise 10: Useful Logical Operators
+# MySQL Exercise: Useful Logical Operators
 
 There are a few more logical operators we haven't covered yet that you might find useful when designing your queries.  Expressions that use logical operators return a result of "true" or "false", depending on whether the conditions you specify are met.  The "true" or "false" results are usually used to determine which, if any, subsequent parts of your query will be run.  We will discuss the IF operator, the CASE operator, and the order of operations within logical expressions in this lesson.
 
