@@ -1,7 +1,6 @@
 
-Copyright Jana Schaich Borg/Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
 
-# MySQL Exercise 12: Queries that Test Relationships Between Test Completion and Testing Circumstances 
+# MySQL : Analyzing Dognition database-Queries that Test Relationships Between Test Completion and Testing Circumstances 
 
 In this lesson, we are going to practice integrating more of the concepts we learned over the past few weeks to address whether issues in our Dognition sPAP are related to the number of tests dogs complete.  We are going to focus on a subset of the issues listed in the "Features of Testing Circumstances" branch of our sPAP.  You will need to look up new functions several times and the final queries at which we will arrive by the end of this lesson will be quite complex, but we will work up to them step-by-step.  
 
